@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MC Lux - Toko Emas Online</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #121212; color: white; text-align: center; }
+        header { background-color: gold; padding: 20px; color: black; }
+        .product { padding: 20px; }
+        .reviews { margin: 20px auto; max-width: 600px; background: white; color: black; padding: 15px; }
+        .star { color: gold; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MC Lux - Online Gold</h1>
+    </header>
+    <div class="product">
+        <h2>Emas Per Gram</h2>
+        <p>Harga Real-Time: <span id="goldPrice">Loading...</span></p>
+        <label for="grams">Jumlah gram:</label>
+        <input type="number" id="grams" min="1" value="1">
+        <button onclick="buyGold()">Beli Sekarang</button>
+    </div>
+    <div class="reviews">
+        <h2>Ulasan Pelanggan</h2>
+        <div id="reviewsContainer"></div>
+    </div>
+    <script>
+        function fetchGoldPrice() {
+            document.getElementById("goldPrice").innerText = "Rp 1.050.000"; // Simulasi harga real-time
+        }
+        function buyGold() {
+            let grams = document.getElementById("grams").value;
+            alert("Anda membeli " + grams + " gram emas.");
+        }
+        function loadReviews() {
+            let reviews = [
+                { name: "Rizky", stars: 5, text: "Pelayanan sangat cepat dan harga bagus!" },
+                { name: "Siti", stars: 4, text: "Bagus, tapi pengiriman sedikit lambat." },
+                { name: "Budi", stars: 3, text: "Harga lumayan, tapi kurang transparan." },
+                { name: "Dewi", stars: 2, text: "Tidak sesuai ekspektasi, butuh perbaikan." },
+                { name: "Joko", stars: 1, text: "Layanan kurang memuaskan." }
+            ];
+            for (let i = 0; i < 60; i++) {
+                reviews.push({ name: "Pelanggan", stars: 5, text: "Sangat puas dengan layanan ini!" });
+            }
+            let container = document.getElementById("reviewsContainer");
+            reviews.forEach(r => {
+                let reviewHTML = `<p><strong>${r.name}</strong> <span class='star'>${"★".repeat(r.stars)}</span> ${"☆".repeat(5 - r.stars)}<br>${r.text}</p>`;
+                container.innerHTML += reviewHTML;
+            });
+        }
+        fetchGoldPrice();
+        loadReviews();
+    </script>
+</body>
+</html>
